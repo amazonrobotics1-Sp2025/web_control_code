@@ -1,7 +1,8 @@
 <script lang="ts">
-	import svelteLogo from "@assets/store.svg";
-	import Counter from "@components/Counter.svelte";
-	import ReqButton from "@components/ReqButton.svelte";
+	import "./app.css";
+	import svelteLogo from "$assets/store.svg";
+	import Counter from "$components/Counter.svelte";
+	import ReqButton from "$components/ReqButton.svelte";
 </script>
 
 <main>
