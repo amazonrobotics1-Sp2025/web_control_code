@@ -1,7 +1,6 @@
 <script lang="ts">
   import "./app.css";
   import svelteLogo from "$assets/store.svg";
-  import { gridLayout } from "$assets/gridLayout";
   import Commands from "$components/Commands.svelte";
   import Interactive from "$components/Interactive.svelte";
   import { Separator } from "$lib/components/ui/separator";
@@ -42,7 +41,7 @@
       <Commands />
     </Tabs.Content>
     <Tabs.Content value="interactive">
-      <Interactive width={384} height={256} gridLayout={gridLayout} />
+      <Interactive width={384} height={256} />
     </Tabs.Content>
   </Tabs.Root>
 
