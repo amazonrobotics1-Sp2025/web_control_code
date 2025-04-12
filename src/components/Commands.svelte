@@ -1,23 +1,52 @@
 <script lang="ts">
-  import ReqButton from "$components/ReqButton.svelte";
+  import ReqButton from "$lib/ReqButton.svelte";
+
+  interface Command {
+    icon: string;
+    method: string;
+    uri: string;
+  }
+
+  const commands: Command[] = [
+    {icon: "stop", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+    {icon: "status", method: "get", uri: "/"},
+  ]
+
+
 </script>
 
 <div class="centering">
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-    <div class="card">
-      <ReqButton icon="stop" method="GET" uri="http://localhost:5173/" />
+  <div class="grid grid-cols-4 md:grid-cols-6">
+    {#each commands as c}
+    <div class="mx-2">
+      <ReqButton {...c} />
     </div>
-    <div class="card">
-      <ReqButton icon="status" method="GET" uri="http://localhost:5173/" />
-    </div>
+    {/each}
   </div>
 </div>
 
 <style>
-  .card {
-    padding: 1em;
-    display: block;
-  }
   .centering {
     display: flex;
     place-content: center;
