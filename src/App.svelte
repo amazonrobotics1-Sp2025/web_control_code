@@ -1,14 +1,14 @@
 <script lang="ts">
   import "./app.css";
   import svelteLogo from "$assets/store.svg";
-  import { gridLayout } from "$assets/gridLayout.ts";
+  import { gridLayout } from "$assets/gridLayout";
   import Commands from "$components/Commands.svelte";
   import Interactive from "$components/Interactive.svelte";
   import { Separator } from "$lib/components/ui/separator";
   import * as Tabs from "$lib/components/ui/tabs/index.js";
 
-  let scrollbox;
-  const logs = $state([]);
+  let scrollbox: HTMLElement;
+  const logs = $state<string[]>([]);
 
   const pushTest = () => {
     logs.push(new Date().toUTCString());
