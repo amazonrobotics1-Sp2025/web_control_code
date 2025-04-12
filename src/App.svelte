@@ -1,9 +1,18 @@
 <script lang="ts">
   import "./app.css";
   import svelteLogo from "$assets/store.svg";
-  import ReqButton from "$components/ReqButton.svelte";
+  import Commands from "$components/Commands.svelte";
   import { Separator } from "$lib/components/ui/separator";
   import * as Tabs from "$lib/components/ui/tabs/index.js";
+
+  let scrollbox;
+  const logs = $state([]);
+
+  const pushTest = () => {
+    logs.push(new Date().toUTCString())
+    scrollbox.scrollTop = scrollbox.scrollHeight
+  }
+
 </script>
 
 <main>
@@ -23,15 +32,30 @@
     <Separator class="my-4 w-[75vw]" />
   </div>
 
+  <Tabs.Root value="commands" class="w-100">
+    <Tabs.List class="grid w-full grid-cols-2">
+      <Tabs.Trigger value="commands">Commands</Tabs.Trigger>
+      <Tabs.Trigger value="interactive">Interactive</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="commands">
+      <Commands />
+    </Tabs.Content>
+    <Tabs.Content value="interactive"></Tabs.Content>
+  </Tabs.Root>
+
   <div class="centering">
-    <div class="grid max-w-sm sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <div class="card">
-        <ReqButton icon="stop" method="GET" uri="http://localhost:5173/" />
-      </div>
-      <div class="card">
-        <ReqButton icon="status" method="GET" uri="http://localhost:5173/" />
-      </div>
-    </div>
+    <Separator class="my-2 w-[65vw]" />
+  </div>
+
+  <div
+    class="my-3 w-100 h-[25vh] min-h-[200px] 
+    rounded-sm border border-grey-300 shadow-md 
+    overflow-y-scroll"
+    bind:this={scrollbox}
+  >
+    {#each logs as log}
+      <p>{log}</p>
+    {/each}
   </div>
 
   <div class="centering">
@@ -41,22 +65,16 @@
   <div id="footer">
     <p class="subtext">Powered by Amazon Robotics Team 1</p>
     <p class="subtext">ME424 Spring 2025</p>
+    <button onclick={pushTest} class="text-xs">Push Date to box</button>
   </div>
 </main>
 
 <style>
-
-
   #siteTitle {
     font-size: 2.5em;
     line-height: 1.1;
     margin: 4px 0px 0px 0px;
   }
-
-  .card {
-    padding: 1em;
-  }
-
   #mainLogo {
     display: block;
     height: 8em;
