@@ -40,13 +40,6 @@
   };
 </script>
 
-<!-- <Button variant="outline" size="icon" disabled>
-    <Reload
-      class={`p-1 animate-spin`}
-      width={size}
-      height={size}
-    />
-  </Button> -->
 
 <Button
   variant="outline"

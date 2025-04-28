@@ -17,7 +17,7 @@
 
     cellWidth = width / data.width;
     cellHeight = height / data.height;
-    console.log(data);
+
     return data;
   };
   const gridLayout = fetchGrid();

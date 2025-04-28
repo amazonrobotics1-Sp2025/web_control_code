@@ -11,8 +11,8 @@
   let disabled = $state(false);
   const store = async () => {
     disabled = true;
-    open = !open;
     await new Promise((resolve) => setTimeout(resolve, 5000));
+    open = !open;
     disabled = false;
   };
 </script>
